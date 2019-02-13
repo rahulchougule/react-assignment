@@ -1,25 +1,27 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {Route, Router, Switch} from "react-router-dom";
+import {createBrowserHistory} from "history";
+
+import Login from "./auth/login";
+import CreatUser from './user/user';
+import PersonalInfo from './personalinfo/personalinfo';
+import Dashboard from "./dashboard";
+const history = createBrowserHistory();
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <Router history={history} >
+          <Switch>
+            <Route exact path='/' component={Login} />
+            <Route path='/createuser' component={CreatUser} />
+            <Route path='/personalinfo' component={PersonalInfo} />
+            <Route path='/dashboard' component={Dashboard} />
+
+            </Switch>
+          </Router>
       </div>
     );
   }

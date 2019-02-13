@@ -22,6 +22,31 @@
 .App-link {
   color: #61dafb;
 }
+.form{
+  margin-left:25%;
+  margin-top:15%;
+  border:1px solid #123456;
+  padding:20px;
+  border-radius:10px;
+}
+.userform{
+  
+  margin-top:5%;
+  border:1px solid #123456;
+  padding:20px;
+  border-radius:10px;
+  margin-left:30px;
+}
+
+.header{
+  background: #22272c;
+  color:#f2f2f2;  
+}
+
+.menubar{
+  background: #22272c;
+  color:#f2f2f2;  
+}
 
 @keyframes App-logo-spin {
   from {

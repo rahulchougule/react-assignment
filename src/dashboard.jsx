@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Route, Router, Switch} from "react-router-dom";
+import { Link } from "react-router-dom";
 import {createBrowserHistory} from "history";
 
 import PersonalInfo from './personalinfo/personalinfo';
@@ -27,15 +27,13 @@ class Dashboard extends Component {
 
                     <div className="row">
                         <div className="col-md-3 menubar">
-                        <Router history={history} >
-                            <Switch>
-                            <Route path='/createuser' component={PersonalInfo} >Menu</Route>
-                            </Switch>
-                        </Router>
-
+                        
+                            <Link className="nav-link" to="/dashboard" >Dashboard</Link>
+                            <Link className="nav-link" to="/personalInfo" >Personal Info</Link>                            
+                            <Link className="nav-link" to="/createuser" >Create User</Link>
                         </div>
                         <div className="col-md-9">
-
+                            
                         </div>
 
                     </div>

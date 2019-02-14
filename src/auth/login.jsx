@@ -16,16 +16,14 @@ class Login extends Component {
         this.serve =  new LoginService();
     }
 
-    onChangeUserName(e){
+    onChangeInput(e){
         this.setState({[e.target.name]:e.target.value})
     }
 
-    onChangePassword(e){
-        this.setState({[e.target.name]:e.target.value})
-    }
 
-    onClickSave(e){
-         
+
+
+    onClickSave(e){  
          
         let userCrd = {
             //id:this.state.id,
@@ -38,7 +36,7 @@ class Login extends Component {
         .then(resp=>resp.json())
         .then(resp=>{
             if(resp.status===200){
-                console.log("dfsaffasf :  ", resp);
+            
                 sessionStorage.setItem("token",resp.token);
                 this.props.history.push('/dashboard')
             }
@@ -54,7 +52,7 @@ class Login extends Component {
                         <div className="form-group">
                             <label htmlFor="userName"> User Name</label>
                             <input type="text" className="form-control" id="userName"
-                            onChange={this.onChangeUserName.bind(this)}
+                            onChange={this.onChangeInput.bind(this)}
                             name="userName"
                             
                             required/>
@@ -62,7 +60,7 @@ class Login extends Component {
                         <div className="form-group">
                             <label htmlFor="password">Password:</label>
                             <input type="password" className="form-control" id="password"
-                            onChange={this.onChangePassword.bind(this)}
+                            onChange={this.onChangeInput.bind(this)}
                             name="password"
                             
                             required/>

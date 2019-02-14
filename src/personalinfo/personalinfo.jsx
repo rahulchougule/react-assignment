@@ -1,4 +1,8 @@
 import React, { Component } from 'react';   
+import { Link } from "react-router-dom";
+
+var logo = require('./../images/logo.png')
+
 
 class PersonalInfo extends Component {
     constructor(props) {
@@ -8,8 +12,31 @@ class PersonalInfo extends Component {
     render() { 
         return ( 
 
-            <div className="container">
-                <div className="col-md-8">
+
+
+
+            <div className="col-md-12">
+                    <div className="row header">
+                        <div className="col-md-3">
+                            <img src={logo} alt="logo" className="img-fluid" width="100px" height="80px"/>
+                    </div>
+                        <div className="col-md-9">
+                            <center> <h2> User Management System</h2> </center>
+                        </div>
+                    </div>
+
+                    <div className="row">
+                        <div className="col-md-3 menubar">
+                        
+                            <Link className="nav-link" to="/dashboard" >Dashboard</Link>
+                            <Link className="nav-link" to="/createuser" >Create User</Link>
+                            <Link className="nav-link" to="/personalInfo" >Personal Info</Link>
+                            <Link className="nav-link" to="/" >logout</Link>                            
+                            
+                        </div>
+                        <div className="col-md-9">
+                        <div className="container">
+                <div className="col-md-10">
                 <center><h2> Add Personal Information </h2></center>
                 <form>
                     <div className="row">
@@ -29,7 +56,7 @@ class PersonalInfo extends Component {
                                 <input type="date" id="dob" class="form-control" />
                             </div>
 
-                            <u> <h3> Address </h3></u>
+                            <u> <h5> Address </h5></u>
                             <div className="form-group">
                                 <label for="flatNo"> Flat No </label>
                                 <input type="text" id="flatNo" class="form-control" />
@@ -54,12 +81,15 @@ class PersonalInfo extends Component {
 
                             <div className="form-group">
                                 <label for="gender"> Gender </label>
-                                <input type="text" class="form-control" id="gender" />
+                                <select class="form-control" id="gender">
+                                 <option value="Male"> Male </option>
+                                 <option value="Female">Female</option>
+                                </select>
                             </div>
 
                             <div className="form-group">
                                 <label for="age"> Age </label>
-                                <input type="date" id="age" class="form-control" />
+                                <input type="text" id="age" class="form-control" />
                             </div>
                                 <br/><br/>
                             <div className="form-group">
@@ -93,6 +123,13 @@ class PersonalInfo extends Component {
                 </form>
                 </div>
                  </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            
          );
     }
 }

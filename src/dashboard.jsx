@@ -14,7 +14,7 @@ class Dashboard extends Component {
     render() { 
         return ( 
 
-            <div>
+            
                 <div className="col-md-12">
                     <div className="row header">
                         <div className="col-md-3">
@@ -29,8 +29,10 @@ class Dashboard extends Component {
                         <div className="col-md-3 menubar">
                         
                             <Link className="nav-link" to="/dashboard" >Dashboard</Link>
-                            <Link className="nav-link" to="/personalInfo" >Personal Info</Link>                            
                             <Link className="nav-link" to="/createuser" >Create User</Link>
+                            <Link className="nav-link" to="/personalInfo" >Personal Info</Link>
+                            <Link className="nav-link" to="/" >logout</Link>                            
+                            
                         </div>
                         <div className="col-md-9">
                             
@@ -39,7 +41,7 @@ class Dashboard extends Component {
                     </div>
                 </div>
 
-            </div>
+            
          );
     }
 }

@@ -46,7 +46,8 @@
 .menubar{
   background: #22272c;
   color:#f2f2f2;
-  border-top:1px solid #ff7200;  
+  border-top:1px solid #ff7200;
+  min-height:100%;  
 }
 
 @keyframes App-logo-spin {

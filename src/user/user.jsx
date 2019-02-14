@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
+
+var logo = require('./../images/logo.png')
 
 class CreatUser extends Component {
     constructor(props) {
@@ -8,6 +11,27 @@ class CreatUser extends Component {
     render() { 
         return ( 
 
+            <div className="col-md-12">
+                    <div className="row header">
+                        <div className="col-md-3">
+                            <img src={logo} alt="logo" className="img-fluid" width="100px" height="80px"/>
+                    </div>
+                        <div className="col-md-9">
+                            <center> <h2> User Management System</h2> </center>
+                        </div>
+                    </div>
+
+                    <div className="row">
+                        <div className="col-md-3 menubar">
+                        
+                            <Link className="nav-link" to="/dashboard" >Dashboard</Link>
+                            <Link className="nav-link" to="/createuser" >Create User</Link>
+                            <Link className="nav-link" to="/personalInfo" >Personal Info</Link>
+                            <Link className="nav-link" to="/" >logout</Link>                            
+                            
+                        </div>
+                        <div className="col-md-9">
+                          
             <div className="container">
              <div className="row">
                 <div className="col-md-5 userform">
@@ -73,7 +97,11 @@ class CreatUser extends Component {
                   </table>
                  </div>
                 </div>
-            </div>
+            </div>  
+                        </div>
+
+                    </div>
+                </div>
          );
     }
 }

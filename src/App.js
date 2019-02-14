@@ -6,7 +6,8 @@ import {createBrowserHistory} from "history";
 import Login from "./auth/login";
 import CreatUser from './user/user';
 import PersonalInfo from './personalinfo/personalinfo';
-import Dashboard from "./dashboard";
+import Dashboard from "./dashboard.jsx";
+
 const history = createBrowserHistory();
 
 class App extends Component {

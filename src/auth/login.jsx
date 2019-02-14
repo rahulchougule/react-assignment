@@ -6,33 +6,41 @@ class Login extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            id:0,
+            //id:0,
             userName:"",
             password:"",
-            dateTime:""
+            //dateTime:""
          }
     
     
         this.serve =  new LoginService();
     }
 
+    onChangeUserName(e){
+        this.setState({[e.target.name]:e.target.value})
+    }
+
+    onChangePassword(e){
+        this.setState({[e.target.name]:e.target.value})
+    }
+
     onClickSave(e){
+         
+         
         let userCrd = {
-            id:this.state.id,
+            //id:this.state.id,
             userName:this.state.userName,
             password:this.state.password,
-            dateTime:new Date()
+            //dateTime:new Date()
         }
 
         this.serve.userAuthentication(userCrd)
         .then(resp=>resp.json())
         .then(resp=>{
             if(resp.status===200){
-                console.log(resp);
-                
+                console.log("dfsaffasf :  ", resp);
                 sessionStorage.setItem("token",resp.token);
-                const h = this.props.history;
-                //h.push('/dashboard')
+                this.props.history.push('/dashboard')
             }
         })
         .catch(error=>console.log(error.status));
@@ -43,20 +51,25 @@ class Login extends Component {
             <div className="container">
                 
                 <div className="col-md-6 form">
-                    <form>
                         <div className="form-group">
-                            <label htmlFor="username"> User Name</label>
-                            <input type="text" className="form-control" id="username" required/>
+                            <label htmlFor="userName"> User Name</label>
+                            <input type="text" className="form-control" id="userName"
+                            onChange={this.onChangeUserName.bind(this)}
+                            name="userName"
+                            
+                            required/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="password">Password:</label>
-                            <input type="password" className="form-control" id="password" required/>
+                            <input type="password" className="form-control" id="password"
+                            onChange={this.onChangePassword.bind(this)}
+                            name="password"
+                            
+                            required/>
                         </div>
                         <div >
                         <button type="submit" className="btn btn-primary" onClick={this.onClickSave.bind(this)}>Login</button>
                         </div>
-                    </form>
-
                 </div>
             </div>
 

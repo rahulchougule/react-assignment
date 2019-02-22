@@ -3,10 +3,12 @@ import LoginService from "./../service/loginservice.js";
 
 
 class Login extends Component {
+    
     constructor(props) {
         super(props);
         this.state = { 
             //id:0,
+    
             userName:"",
             password:"",
             //dateTime:""
@@ -36,9 +38,24 @@ class Login extends Component {
         .then(resp=>resp.json())
         .then(resp=>{
             if(resp.status===200){
-            
+                console.log("-------------", resp.userName);
+                
                 sessionStorage.setItem("token",resp.token);
-                this.props.history.push('/dashboard')
+                sessionStorage.setItem("role", resp.role);
+                sessionStorage.setItem("userName", resp.userName);
+                
+                this.role = sessionStorage.getItem("role");
+                console.log(this.role);
+                
+                if(this.role === "Admin" || this.role ==="Operator"){
+                this.props.history.push('/dashboard') }
+                else if(this.role === "AccessUser"){
+                    //this.props.history.push('/userdashboard/'+ resp.userName) 
+                    this.props.history.push('/userdashboard/'+resp.userName) 
+                }
+            }
+            else{
+                alert(JSON.stringify(resp.message))
             }
         })
         .catch(error=>console.log(error.status));
@@ -46,10 +63,12 @@ class Login extends Component {
     
     render() { 
         return ( 
+            <div id="login">
             <div className="container">
                 
                 <div className="col-md-6 form">
                         <div className="form-group">
+                            <center><h3>Login</h3> </center>
                             <label htmlFor="userName"> User Name</label>
                             <input type="text" className="form-control" id="userName"
                             onChange={this.onChangeInput.bind(this)}
@@ -66,11 +85,11 @@ class Login extends Component {
                             required/>
                         </div>
                         <div >
-                        <button type="submit" className="btn btn-primary" onClick={this.onClickSave.bind(this)}>Login</button>
+                        <button type="submit" className="btn btn-primary" onClick={this.onClickSave.bind(this)}>Get In</button>
                         </div>
                 </div>
             </div>
-
+            </div>
          );
     }
 }

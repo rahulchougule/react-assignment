@@ -13,19 +13,24 @@ class UserService{
         return promise;
     }
 
-    getUser(user,token){
-
+    getUser(token){
+        //console.log(user);
+        
         let promise = fetch("http://localhost:4040/api/user", {
-                            method:"POST",
+                            method:"GET",
                             headers:{
                                 
                                 "Content-type":"application/json",
                                 "Authorization":"Bearer "+token
                             },
-                            body:JSON.stringify(user)
+                            
                         });
-                        return promise;                
+                    
+                        return promise;  
+                                      
         }
+
+        
 }
 
 export default UserService;
